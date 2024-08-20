@@ -1,0 +1,70 @@
+@font-face{
+  
+}
+body{
+  font-family: "Heebo", sans-serif;
+}
+.wrap{
+  max-width: 1240px;
+  margin: 0 auto;
+}
+.flex{
+  display: flex;
+}
+.grid{
+  display: grid;
+}
+.block{
+  display: block;
+}
+.hide{
+  display: none;
+}
+
+/* 버튼 스타일 */
+.shop{
+  width: 40px;
+  height: 40px;
+  background-image: url(../img/svg/shopping_bag_white.svg);
+  background-size: 60%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: rgba(3,189,115,0.51);
+  border-radius: 50%;
+  position: absolute;
+  bottom: 120px;
+  right: 10px;
+  z-index: 1;
+}
+.like{
+  
+}
+.star{
+  
+}
+/* 폰트크기 */
+.h1{
+  font-size: 40px;
+}
+.h2{
+  font-size: 32px;
+}
+.h3{
+  font-size: 20px;
+}
+.h4{
+  font-size: 17px;
+}
+.h5{
+  font-size: 16px;
+}
+.h6{
+  font-size: 13px;
+}
+.p{
+  font-size: 12px;
+}
+
+.current{
+  
+}

@@ -1,0 +1,97 @@
+header{
+  
+}
+header > div{
+  padding: 10px 20px;
+  grid-template-columns: auto auto 1fr auto;
+  grid-template-rows: auto;
+  column-gap: 20px;
+}
+header div h1{
+  margin: 0;
+}
+header div h1 a{
+  background-image: url(../img/logo.png);
+  font-size: 0;
+  width: 160px;
+  height: 60px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+header .ham{
+  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+header .ham a{
+  
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+} 
+header .ham a span{
+  width: 25px;
+  height: 3px;
+  display: block;
+  background-color: #3f3f3f;
+} 
+header .ham a span:nth-child(2){
+  
+  width: 20px;
+}
+header div .gnb{
+  align-items: center;
+  justify-content: center;
+}
+header div .gnb li{ 
+  position: relative;
+}
+header div .gnb > li > a{
+  padding: 15px;
+  font-weight: 600;
+}
+header div .gnb li .sub{
+  width: 190px;
+  background-color: #fff;
+  box-shadow: 5px 5px 5px #ababab61;
+  padding: 20px;
+  box-sizing: border-box;
+  position: absolute;
+  z-index: 1;
+  border-radius: 10px;
+}
+header div .gnb li .sub li{
+  
+}
+header div .gnb li .sub li a{
+  text-align: center;
+  font-size: 14px;
+  padding: 6px 0;
+}
+header div .enb{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+header div .enb li{
+  
+}
+header div .enb li a{
+  font-size: 0;
+  width: 35px;
+  height: 35px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+header div .enb li:nth-child(1) a{
+  background-image: url(../img/svg/person.svg);
+}
+header div .enb li:nth-child(2) a{
+  background-image: url(../img/svg/shopping_bag.svg);
+}
+header div .enb li:nth-child(3) a{
+  background-image: url(../img/svg/search.svg);
+}
