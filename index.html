@@ -30,8 +30,20 @@
         $(document).ready(function(){
             //메뉴 서브
             $("header div .gnb li .sub").hide();
-            $("header div .gnb > li > a").hover(function(){
-                $("header div .gnb li .sub").stop().slideDown();
+            let h;
+            $("header div .gnb li").hover(
+                function(){
+                    h=$(this).index()+1;
+                    $("header div .gnb li:nth-child("+h+") .sub").stop().show();
+                },
+                function(){
+                    $("header div .gnb li:nth-child("+h+") .sub").hide();
+                }
+            );
+            //ham버튼 클릭 시 창
+            $("header .ham a").click(function(){
+                $("").css({});
+                $("").css({})
             });
 
             //타이틀 슬릭
@@ -47,9 +59,21 @@
                 arrows: true,
                 fade: false
                 
-                
             });
         
+            //슬릭 진행바
+            var $slider = $('.pAni');
+            var $progressBar = $('.progress-bar');
+            var slideCount = null;
+
+            $slider.on('init', function(event, slick){
+                slideCount = slick.slideCount;
+                setProgress(0);
+            });
+
+            $slider.on('beforeChange', function(event, slick, currentSlide, nextSlide){
+                setProgress(nextSlide);
+            });
 
             //메인#present 슬릭
             $(".pAni").slick({
@@ -68,35 +92,47 @@
                 
                 
             });
-            //current의 텍스트만 보이게
-            $("#present .p ul li a .text").hide();
+
+            function setProgress(index) {
+                var calc = ((index + 1) / slideCount) * 100;
+                $progressBar.css('width', calc + '%');
+            }
             
+            //버튼, 진행바 위치 이동
+            $("#present .p ul button, #present .wprogress-bar").wrapAll('<div class="wrap wbutn"></div>');
+
 
             //#present li 클릭시 하단 div 변화
             $("#best .wrap .best:not(:nth-of-type(1))").hide();
-            $("#best .wrap ul li:nth-child(1)").click(function(){
+            $("#best .wrap ul li:nth-child(1) a").click(function(){
                 $("#best .wrap .best:nth-of-type(1)").show();
                 $("#best .wrap .best:not(:nth-of-type(1))").hide();
+                return false;
             });
-            $("#best .wrap ul li:nth-child(2)").click(function(){
+            $("#best .wrap ul li:nth-child(2) a").click(function(){
                 $("#best .wrap .best:nth-of-type(2)").show();
                 $("#best .wrap .best:not(:nth-of-type(2))").hide();
+                return false;
             });
-            $("#best .wrap ul li:nth-child(3)").click(function(){
+            $("#best .wrap ul li:nth-child(3) a").click(function(){
                 $("#best .wrap .best:nth-of-type(3)").show();
                 $("#best .wrap .best:not(:nth-of-type(3))").hide();
+                return false;
             });
-            $("#best .wrap ul li:nth-child(4)").click(function(){
+            $("#best .wrap ul li:nth-child(4) a").click(function(){
                 $("#best .wrap .best:nth-of-type(4)").show();
                 $("#best .wrap .best:not(:nth-of-type(4))").hide();
+                return false;
             });
-            $("#best .wrap ul li:nth-child(5)").click(function(){
+            $("#best .wrap ul li:nth-child(5) a").click(function(){
                 $("#best .wrap .best:nth-of-type(5)").show();
                 $("#best .wrap .best:not(:nth-of-type(5))").hide();
+                return false;
             });
-            $("#best .wrap ul li:nth-child(6)").click(function(){
+            $("#best .wrap ul li:nth-child(6) a").click(function(){
                 $("#best .wrap .best:nth-of-type(6)").show();
                 $("#best .wrap .best:not(:nth-of-type(6))").hide();
+                return false;
             });
 
 
@@ -121,7 +157,7 @@
             $(".popAni").slick({
                 slidesToScroll: 1,
                 slidesToShow: 4,
-                autoplay: true,
+                autoplay: false,
                 autoplaySpeed: 3000,
                 dots: false,
                 infinite: false,
@@ -139,7 +175,7 @@
                 slidesToShow: 1.3,
                 autoplay: true,
                 autoplaySpeed: 3000,
-                dots: false,
+                dots: true,
                 infinite: true,
                 speed: 500,
                 cssEase: 'ease-out',
@@ -170,78 +206,78 @@
     <!-- 헤더 -->
     <header>
         <div class="grid">
-            <h1><a href="" class="block">dalmuri</a></h1>
+            <h1><a href="#" class="block">dalmuri</a></h1>
             <div class="ham">
-                <a href="" class="block">
+                <a href="#" class="block">
                     <span></span>
                     <span></span>
                     <span></span>
                 </a>
             </div>
             <ul class="gnb flex">
-                <li><a href="" class="block">24 여름신상🍒</a></li>
-                <li><a href="" class="block">BEST100</a></li>
+                <li><a href="#" class="block">24 여름신상🍒</a></li>
+                <li><a href="#" class="block">BEST100</a></li>
                 <li>
-                    <a href="" class="block">상의</a>
+                    <a href="#" class="block">상의</a>
                     <ul class="sub">
-                        <li><a href="" class="block">티셔츠</a></li>
-                        <li><a href="" class="block">민소매</a></li>
-                        <li><a href="" class="block">블라우스/셔츠</a></li>
-                        <li><a href="" class="block">맨투맨/후드</a></li>
-                        <li><a href="" class="block">니트</a></li>
+                        <li><a href="#" class="block">티셔츠</a></li>
+                        <li><a href="#" class="block">민소매</a></li>
+                        <li><a href="#" class="block">블라우스/셔츠</a></li>
+                        <li><a href="#" class="block">맨투맨/후드</a></li>
+                        <li><a href="#" class="block">니트</a></li>
                     </ul>
                 </li>
                 <li>
-                    <a href="" class="block">하의</a>
+                    <a href="#" class="block">하의</a>
                     <ul class="sub">
-                        <li><a href="" class="block">스커트</a></li>
-                        <li><a href="" class="block">데님팬츠</a></li>
-                        <li><a href="" class="block">조거/배기팬츠</a></li>
-                        <li><a href="" class="block">트레이닝팬츠</a></li>
-                        <li><a href="" class="block">우븐팬츠</a></li>
-                        <li><a href="" class="block">레깅스/치랭스</a></li>
-                        <li><a href="" class="block">숏/미디팬츠</a></li>
+                        <li><a href="#" class="block">스커트</a></li>
+                        <li><a href="#" class="block">데님팬츠</a></li>
+                        <li><a href="#" class="block">조거/배기팬츠</a></li>
+                        <li><a href="#" class="block">트레이닝팬츠</a></li>
+                        <li><a href="#" class="block">우븐팬츠</a></li>
+                        <li><a href="#" class="block">레깅스/치랭스</a></li>
+                        <li><a href="#" class="block">숏/미디팬츠</a></li>
                     </ul>
                 </li>
                 <li>
-                    <a href="" class="block">아우터</a>
+                    <a href="#" class="block">아우터</a>
                     <ul class="sub">
-                        <li><a href="" class="block">가디건/집업</a></li>
-                        <li><a href="" class="block">점퍼/자켓/코트</a></li>
-                        <li><a href="" class="block">베스트/뷔스티에</a></li>
-                        <li><a href="" class="block">패딩/다운</a></li>
+                        <li><a href="#" class="block">가디건/집업</a></li>
+                        <li><a href="#" class="block">점퍼/자켓/코트</a></li>
+                        <li><a href="#" class="block">베스트/뷔스티에</a></li>
+                        <li><a href="#" class="block">패딩/다운</a></li>
                     </ul>
                 </li>
                 <li>
-                    <a href="" class="block">원피스&세트</a>
+                    <a href="#" class="block">원피스&세트</a>
                     <ul class="sub">
-                        <li><a href="" class="block">원피스</a></li>
-                        <li><a href="" class="block">상하세트</a></li>
+                        <li><a href="#" class="block">원피스</a></li>
+                        <li><a href="#" class="block">상하세트</a></li>
                     </ul>
                 </li>
                 <li>
-                    <a href="" class="block">악세사리</a>
+                    <a href="#" class="block">악세사리</a>
                     <ul class="sub">
-                        <li><a href="" class="block">스타킹/양말</a></li>
-                        <li><a href="" class="block">헤어악세사리</a></li>
-                        <li><a href="" class="block">모자</a></li>
-                        <li><a href="" class="block">가방</a></li>
-                        <li><a href="" class="block">쥬얼리</a></li>
-                        <li><a href="" class="block">선글라스</a></li>
-                        <li><a href="" class="block">장갑/머플러</a></li>
-                        <li><a href="" class="block">뷰티</a></li>
-                        <li><a href="" class="block">기타ACC</a></li>
+                        <li><a href="#" class="block">스타킹/양말</a></li>
+                        <li><a href="#" class="block">헤어악세사리</a></li>
+                        <li><a href="#" class="block">모자</a></li>
+                        <li><a href="#" class="block">가방</a></li>
+                        <li><a href="#" class="block">쥬얼리</a></li>
+                        <li><a href="#" class="block">선글라스</a></li>
+                        <li><a href="#" class="block">장갑/머플러</a></li>
+                        <li><a href="#" class="block">뷰티</a></li>
+                        <li><a href="#" class="block">기타ACC</a></li>
                     </ul>
                 </li>
-                <li><a href="" class="block">바캉스🌙</a></li>
-                <li><a href="" class="block">세일🩵</a></li>
-                <li><a href="" class="block">이벤트</a></li>
-                <li><a href="" class="block">커뮤니티</a></li>
+                <li><a href="#" class="block">바캉스🌙</a></li>
+                <li><a href="#" class="block">세일🩵</a></li>
+                <li><a href="#" class="block">이벤트</a></li>
+                <li><a href="#" class="block">커뮤니티</a></li>
             </ul>
             <ul class="enb">
-                <li><a href="" class="block">로그인</a></li>
-                <li><a href="" class="block">장바구니</a></li>
-                <li><a href="" class="block">검색</a></li>
+                <li><a href="#" class="block">로그인</a></li>
+                <li><a href="#" class="block">장바구니</a></li>
+                <li><a href="#" class="block">검색</a></li>
             </ul>
         </div>
     </header>
@@ -250,7 +286,7 @@
         <div class="title">
             <ul class="titleAni">
                 <li class="t1">
-                    <a href="" class="block">
+                    <a href="#" class="block">
                         <div class="text">
                             <h2>회원혜택 쇼핑지원금</h2>
                             <p>최대 5만원 적립금 지원</p>
@@ -258,7 +294,7 @@
                     </a>
                 </li>
                 <li class="t2">
-                    <a href="" class="block">
+                    <a href="#" class="block">
                         <div class="text">
                             <h2>GRAPHOLIC <span class="block"></span> LEMON</h2>
                             <p>가장 사랑받는 베스트!</p>
@@ -266,12 +302,12 @@
                     </a>
                 </li>
                 <li class="t3">
-                    <a href="" class="block">
+                    <a href="#" class="block">
                         
                     </a>
                 </li>
                 <li class="t4">
-                    <a href="" class="block">
+                    <a href="#" class="block">
                         <div class="text">
                             <strong>BIG EVENT</strong>
                             <h2>CONTENTS</h2>
@@ -280,7 +316,7 @@
                     </a>
                 </li>
                 <li class="t5">
-                    <a href="" class="block">
+                    <a href="#" class="block">
                         
                     </a>
                 </li>
@@ -289,10 +325,10 @@
     </div>
     <!-- 어사이드 -->
     <aside>
-        <a href="" class="block kakaotalk">카카오</a>
-        <a href="" class="block navertalk">네이버</a>
-        <a href="" class="block up">UP</a>
-        <a href="" class="block down">DOWN</a>
+        <a href="#" class="block kakaotalk">카카오</a>
+        <a href="#" class="block navertalk">네이버</a>
+        <a href="#" class="block up">UP</a>
+        <a href="#" class="block down">DOWN</a>
     </aside>
     <!-- 메인 -->
     <main>
@@ -302,55 +338,55 @@
                 <h2 class="hide">메뉴</h2>
                 <ul class="flex">
                     <li>
-                        <a href="" class="block">
+                        <a href="#" class="block">
                             <img src="img/icon1.png" alt="">
                             <p>#원피스</p>
                         </a>
                     </li>
                     <li>
-                        <a href="" class="block">
+                        <a href="#" class="block">
                             <img src="img/icon2.png" alt="">
                             <p>#니트</p>
                         </a>
                     </li>
                     <li>
-                        <a href="" class="block">
+                        <a href="#" class="block">
                             <img src="img/icon3.png" alt="">
                             <p>#세트</p>
                         </a>
                     </li>
                     <li>
-                        <a href="" class="block">
+                        <a href="#" class="block">
                             <img src="img/icon4.png" alt="">
                             <p>#스타킹</p>
                         </a>
                     </li>
                     <li>
-                        <a href="" class="block">
+                        <a href="#" class="block">
                             <img src="img/icon5.png" alt="">
                             <p>#가디건</p>
                         </a>
                     </li>
                     <li>
-                        <a href="" class="block">
+                        <a href="#" class="block">
                             <img src="img/icon6.png" alt="">
                             <p>#트렌치</p>
                         </a>
                     </li>
                     <li>
-                        <a href="" class="block">
+                        <a href="#" class="block">
                             <img src="img/icon7.png" alt="">
                             <p>#슬랙스</p>
                         </a>
                     </li>
                     <li>
-                        <a href="" class="block">
+                        <a href="#" class="block">
                             <img src="img/icon8.png" alt="">
                             <p>#핸드메이트코트</p>
                         </a>
                     </li>
                     <li>
-                        <a href="" class="block">
+                        <a href="#" class="block">
                             <img src="img/icon9.png" alt="">
                             <p>#트위드</p>
                         </a>
@@ -364,7 +400,7 @@
                 <h2>그라폴릭 회원님들을 위한<span class="block"></span><strong>특별한 선물!</strong></h2>
                 <ul class="pAni">
                     <li class="p1">
-                        <a href="" class="block">
+                        <a href="#" class="block">
                             <img src="img/p1.jpg" alt="">
                             <div class="text">
                                 <strong>회원혜택 쇼핑지원금</strong>
@@ -373,7 +409,7 @@
                         </a>
                     </li>
                     <li class="p2">
-                        <a href="" class="block">
+                        <a href="#" class="block">
                             <img src="img/p2.jpg" alt="">
                             <div class="text">
                                 <strong>비지니스·강사·일반회원</strong>
@@ -382,7 +418,7 @@
                         </a>
                     </li>
                     <li class="p3">
-                        <a href="" class="block">
+                        <a href="#" class="block">
                             <img src="img/p3.jpg" alt="">
                             <div class="text">
                                 <strong>매주 우수 리뷰</strong>
@@ -391,7 +427,7 @@
                         </a>
                     </li>
                     <li class="p4">
-                        <a href="" class="block">
+                        <a href="#" class="block">
                             <img src="img/p4.jpg" alt="">
                             <div class="text">
                                 <strong>전 상품 5만원 이상</strong>
@@ -400,7 +436,7 @@
                         </a>
                     </li>
                     <li class="p5">
-                        <a href="" class="block">
+                        <a href="#" class="block">
                             <img src="img/p5.jpg" alt="">
                             <div class="text">
                                 <strong>CONTENTS</strong>
@@ -409,7 +445,7 @@
                         </a>
                     </li>
                     <li class="p1">
-                        <a href="" class="block">
+                        <a href="#" class="block">
                             <img src="img/p1.jpg" alt="">
                             <div class="text">
                                 <strong>회원혜택 쇼핑지원금</strong>
@@ -418,7 +454,7 @@
                         </a>
                     </li>
                     <li class="p2">
-                        <a href="" class="block">
+                        <a href="#" class="block">
                             <img src="img/p2.jpg" alt="">
                             <div class="text">
                                 <strong>비지니스·강사·일반회원</strong>
@@ -427,7 +463,7 @@
                         </a>
                     </li>
                     <li class="p3">
-                        <a href="" class="block">
+                        <a href="#" class="block">
                             <img src="img/p3.jpg" alt="">
                             <div class="text">
                                 <strong>매주 우수 리뷰</strong>
@@ -436,7 +472,7 @@
                         </a>
                     </li>
                     <li class="p4">
-                        <a href="" class="block">
+                        <a href="#" class="block">
                             <img src="img/p4.jpg" alt="">
                             <div class="text">
                                 <strong>전 상품 5만원 이상</strong>
@@ -445,7 +481,7 @@
                         </a>
                     </li>
                     <li class="p5">
-                        <a href="" class="block">
+                        <a href="#" class="block">
                             <img src="img/p5.jpg" alt="">
                             <div class="text">
                                 <strong>CONTENTS</strong>
@@ -455,49 +491,53 @@
                     </li>
                 </ul>
             </div>
+            <div class="wprogress-bar">
+                <div class="progress-bar"></div>
+            </div>
         </section>
         <!-- 베스트 제품 -->
         <section id="best">
             <div class="wrap">
                 <h2>이번 주 베스트</h2>
                 <ul>
-                    <li>OUTER</li>
-                    <li>TOP</li>
-                    <li>PANTS</li>
-                    <li>KNIT</li>
-                    <li>BLOUSE</li>
-                    <li>ACC</li>
+                    <li><a href="#" class="block">OUTER</a></li>
+                    <li><a href="#" class="block">TOP</a></li>
+                    <li><a href="#" class="block">PANTS</a></li>
+                    <li><a href="#" class="block">KNIT</a></li>
+                    <li><a href="#" class="block">BLOUSE</a></li>
+                    <li><a href="#" class="block">ACC</a></li>
                 </ul>
                 <div class="best outer">
                     <h2 class="hide">OUTER</h2>
                     <article>
-                        <a href="" class="block">
+                        <a href="#" class="block">
                             <img src="img/best/outer1.jpg" alt="">
                             <div class="text">
                                 <h3>주방매트-포인트 캣&퍼피</h3>
                                 <span><strong>44,000원</strong><i>140,000원</i></span>
-                                <span>리뷰 <strong>0</strong></span>
+                                <span>리뷰<strong>0</strong></span>
                             </div>
                         </a>
-                        <button class="like"></button>
+                        <button class="like">LIKE 0</button>
                         <button class="star"></button>
                         <button class="shop"></button>
                     </article>
                     <article>
-                        <a href="" class="block">
+                        <a href="#" class="block">
                             <img src="img/best/outer2.jpg" alt="">
                             <div class="text">
                                 <h3>러그-블루 스팅</h3>
                                 <span><strong>34,000원</strong><i>52,000원</i></span>
                                 <span>리뷰<strong>0</strong></span>
+                                <span>특가</span>
                             </div>
                         </a>
-                        <button class="like"></button>
+                        <button class="like">LIKE 0</button>
                         <button class="star"></button>
                         <button class="shop"></button>
                     </article>
                     <article>
-                        <a href="" class="block">
+                        <a href="#" class="block">
                             <img src="img/best/outer3.jpg" alt="">
                             <div class="text">
                                 <h3>식탁보-베이스 스트라이프&마린느 윙클</h3>
@@ -505,12 +545,12 @@
                                 <span>리뷰<strong>0</strong></span>
                             </div>
                         </a>
-                        <button class="like"></button>
+                        <button class="like">LIKE 0</button>
                         <button class="star"></button>
                         <button class="shop"></button>
                     </article>
                     <article>
-                        <a href="" class="block">
+                        <a href="#" class="block">
                             <img src="img/best/outer4.jpg" alt="">
                             <div class="text">
                                 <h3>쿠션&방석-스타앤 스티치</h3>
@@ -518,12 +558,12 @@
                                 <span>리뷰<strong>0</strong></span>
                             </div>
                         </a>
-                        <button class="like"></button>
+                        <button class="like">LIKE 0</button>
                         <button class="star"></button>
                         <button class="shop"></button>
                     </article>
                     <article>
-                        <a href="" class="block">
+                        <a href="#" class="block">
                             <img src="img/best/outer5.jpg" alt="">
                             <div class="text">
                                 <h3>쉬폰커튼-그레이 솔리드</h3>
@@ -531,12 +571,12 @@
                                 <span>리뷰<strong>0</strong></span>
                             </div>
                         </a>
-                        <button class="like"></button>
+                        <button class="like">LIKE 0</button>
                         <button class="star"></button>
                         <button class="shop"></button>
                     </article>
                     <article>
-                        <a href="" class="block">
+                        <a href="#" class="block">
                             <img src="img/best/outer6.jpg" alt="">
                             <div class="text">
                                 <h3>쿠션&방석-오션블루 시리즈</h3>
@@ -544,7 +584,7 @@
                                 <span>리뷰<strong>0</strong></span>
                             </div>
                         </a>
-                        <button class="like"></button>
+                        <button class="like">LIKE 0</button>
                         <button class="star"></button>
                         <button class="shop"></button>
                     </article>
@@ -552,7 +592,7 @@
                 <div class="best top">
                     <h2 class="hide">top</h2>
                     <article>
-                        <a href="" class="block">
+                        <a href="#" class="block">
                             <img src="img/best/top1.jpg" alt="">
                             <div class="text">
                                 <h3>쿠션&방석-오션블루 시리즈</h3>
@@ -560,12 +600,12 @@
                                 <span>리뷰<strong>0</strong></span>
                             </div>
                         </a>
-                        <button class="like"></button>
+                        <button class="like">LIKE 0</button>
                         <button class="star"></button>
                         <button class="shop"></button>
                     </article>
                     <article>
-                        <a href="" class="block">
+                        <a href="#" class="block">
                             <img src="img/best/top2.jpg" alt="">
                             <div class="text">
                                 <h3>쿠션&방석-오션블루 시리즈</h3>
@@ -573,12 +613,12 @@
                                 <span>리뷰<strong>0</strong></span>
                             </div>
                         </a>
-                        <button class="like"></button>
+                        <button class="like">LIKE 0</button>
                         <button class="star"></button>
                         <button class="shop"></button>
                     </article>
                     <article>
-                        <a href="" class="block">
+                        <a href="#" class="block">
                             <img src="img/best/top3.jpg" alt="">
                             <div class="text">
                                 <h3>쿠션&방석-오션블루 시리즈</h3>
@@ -586,12 +626,12 @@
                                 <span>리뷰<strong>0</strong></span>
                             </div>
                         </a>
-                        <button class="like"></button>
+                        <button class="like">LIKE 0</button>
                         <button class="star"></button>
                         <button class="shop"></button>
                     </article>
                     <article>
-                        <a href="" class="block">
+                        <a href="#" class="block">
                             <img src="img/best/top4.jpg" alt="">
                             <div class="text">
                                 <h3>쿠션&방석-오션블루 시리즈</h3>
@@ -599,12 +639,12 @@
                                 <span>리뷰<strong>0</strong></span>
                             </div>
                         </a>
-                        <button class="like"></button>
+                        <button class="like">LIKE 0</button>
                         <button class="star"></button>
                         <button class="shop"></button>
                     </article>
                     <article>
-                        <a href="" class="block">
+                        <a href="#" class="block">
                             <img src="img/best/top5.jpg" alt="">
                             <div class="text">
                                 <h3>쿠션&방석-오션블루 시리즈</h3>
@@ -612,12 +652,12 @@
                                 <span>리뷰<strong>0</strong></span>
                             </div>
                         </a>
-                        <button class="like"></button>
+                        <button class="like">LIKE 0</button>
                         <button class="star"></button>
                         <button class="shop"></button>
                     </article>
                     <article>
-                        <a href="" class="block">
+                        <a href="#" class="block">
                             <img src="img/best/top6.jpg" alt="">
                             <div class="text">
                                 <h3>쿠션&방석-오션블루 시리즈</h3>
@@ -625,7 +665,7 @@
                                 <span>리뷰<strong>0</strong></span>
                             </div>
                         </a>
-                        <button class="like"></button>
+                        <button class="like">LIKE 0</button>
                         <button class="star"></button>
                         <button class="shop"></button>
                     </article>
@@ -633,7 +673,7 @@
                 <div class="best pants">
                     <h2 class="hide">pants</h2>
                     <article>
-                        <a href="" class="block">
+                        <a href="#" class="block">
                             <img src="img/best/pants1.jpg" alt="">
                             <div class="text">
                                 <h3>쿠션&방석-오션블루 시리즈</h3>
@@ -641,12 +681,12 @@
                                 <span>리뷰<strong>0</strong></span>
                             </div>
                         </a>
-                        <button class="like"></button>
+                        <button class="like">LIKE 0</button>
                         <button class="star"></button>
                         <button class="shop"></button>
                     </article>
                     <article>
-                        <a href="" class="block">
+                        <a href="#" class="block">
                             <img src="img/best/pants2.jpg" alt="">
                             <div class="text">
                                 <h3>쿠션&방석-오션블루 시리즈</h3>
@@ -654,12 +694,12 @@
                                 <span>리뷰<strong>0</strong></span>
                             </div>
                         </a>
-                        <button class="like"></button>
+                        <button class="like">LIKE 0</button>
                         <button class="star"></button>
                         <button class="shop"></button>
                     </article>
                     <article>
-                        <a href="" class="block">
+                        <a href="#" class="block">
                             <img src="img/best/pants3.jpg" alt="">
                             <div class="text">
                                 <h3>쿠션&방석-오션블루 시리즈</h3>
@@ -667,12 +707,12 @@
                                 <span>리뷰<strong>0</strong></span>
                             </div>
                         </a>
-                        <button class="like"></button>
+                        <button class="like">LIKE 0</button>
                         <button class="star"></button>
                         <button class="shop"></button>
                     </article>
                     <article>
-                        <a href="" class="block">
+                        <a href="#" class="block">
                             <img src="img/best/pants4.jpg" alt="">
                             <div class="text">
                                 <h3>쿠션&방석-오션블루 시리즈</h3>
@@ -680,12 +720,12 @@
                                 <span>리뷰<strong>0</strong></span>
                             </div>
                         </a>
-                        <button class="like"></button>
+                        <button class="like">LIKE 0</button>
                         <button class="star"></button>
                         <button class="shop"></button>
                     </article>
                     <article>
-                        <a href="" class="block">
+                        <a href="#" class="block">
                             <img src="img/best/pants5.jpg" alt="">
                             <div class="text">
                                 <h3>쿠션&방석-오션블루 시리즈</h3>
@@ -693,12 +733,12 @@
                                 <span>리뷰<strong>0</strong></span>
                             </div>
                         </a>
-                        <button class="like"></button>
+                        <button class="like">LIKE 0</button>
                         <button class="star"></button>
                         <button class="shop"></button>
                     </article>
                     <article>
-                        <a href="" class="block">
+                        <a href="#" class="block">
                             <img src="img/best/pants6.jpg" alt="">
                             <div class="text">
                                 <h3>쿠션&방석-오션블루 시리즈</h3>
@@ -706,7 +746,7 @@
                                 <span>리뷰<strong>0</strong></span>
                             </div>
                         </a>
-                        <button class="like"></button>
+                        <button class="like">LIKE 0</button>
                         <button class="star"></button>
                         <button class="shop"></button>
                     </article>
@@ -714,7 +754,7 @@
                 <div class="best knit">
                     <h2 class="hide">knit</h2>
                     <article>
-                        <a href="" class="block">
+                        <a href="#" class="block">
                             <img src="img/best/knit1.jpg" alt="">
                             <div class="text">
                                 <h3>쿠션&방석-오션블루 시리즈</h3>
@@ -722,25 +762,26 @@
                                 <span>리뷰<strong>0</strong></span>
                             </div>
                         </a>
-                        <button class="like"></button>
+                        <button class="like">LIKE 0</button>
                         <button class="star"></button>
                         <button class="shop"></button>
                     </article>
                     <article>
-                        <a href="" class="block">
+                        <a href="#" class="block">
                             <img src="img/best/knit2.jpg" alt="">
                             <div class="text">
                                 <h3>쿠션&방석-오션블루 시리즈</h3>
                                 <span><strong>44,000원</strong><i>124,800원</i></span>
                                 <span>리뷰<strong>0</strong></span>
+                                <span>특가</span>
                             </div>
                         </a>
-                        <button class="like"></button>
+                        <button class="like">LIKE 0</button>
                         <button class="star"></button>
                         <button class="shop"></button>
                     </article>
                     <article>
-                        <a href="" class="block">
+                        <a href="#" class="block">
                             <img src="img/best/knit3.jpg" alt="">
                             <div class="text">
                                 <h3>쿠션&방석-오션블루 시리즈</h3>
@@ -748,12 +789,12 @@
                                 <span>리뷰<strong>0</strong></span>
                             </div>
                         </a>
-                        <button class="like"></button>
+                        <button class="like">LIKE 0</button>
                         <button class="star"></button>
                         <button class="shop"></button>
                     </article>
                     <article>
-                        <a href="" class="block">
+                        <a href="#" class="block">
                             <img src="img/best/knit4.jpg" alt="">
                             <div class="text">
                                 <h3>쿠션&방석-오션블루 시리즈</h3>
@@ -761,12 +802,12 @@
                                 <span>리뷰<strong>0</strong></span>
                             </div>
                         </a>
-                        <button class="like"></button>
+                        <button class="like">LIKE 0</button>
                         <button class="star"></button>
                         <button class="shop"></button>
                     </article>
                     <article>
-                        <a href="" class="block">
+                        <a href="#" class="block">
                             <img src="img/best/knit5.jpg" alt="">
                             <div class="text">
                                 <h3>쿠션&방석-오션블루 시리즈</h3>
@@ -774,12 +815,12 @@
                                 <span>리뷰<strong>0</strong></span>
                             </div>
                         </a>
-                        <button class="like"></button>
+                        <button class="like">LIKE 0</button>
                         <button class="star"></button>
                         <button class="shop"></button>
                     </article>
                     <article>
-                        <a href="" class="block">
+                        <a href="#" class="block">
                             <img src="img/best/knit6.jpg" alt="">
                             <div class="text">
                                 <h3>쿠션&방석-오션블루 시리즈</h3>
@@ -787,7 +828,7 @@
                                 <span>리뷰<strong>0</strong></span>
                             </div>
                         </a>
-                        <button class="like"></button>
+                        <button class="like">LIKE 0</button>
                         <button class="star"></button>
                         <button class="shop"></button>
                     </article>
@@ -795,7 +836,7 @@
                 <div class="best blouse">
                     <h2 class="hide">blouse</h2>
                     <article>
-                        <a href="" class="block">
+                        <a href="#" class="block">
                             <img src="img/best/blouse1.jpg" alt="">
                             <div class="text">
                                 <h3>쿠션&방석-오션블루 시리즈</h3>
@@ -803,12 +844,12 @@
                                 <span>리뷰<strong>0</strong></span>
                             </div>
                         </a>
-                        <button class="like"></button>
+                        <button class="like">LIKE 0</button>
                         <button class="star"></button>
                         <button class="shop"></button>
                     </article>
                     <article>
-                        <a href="" class="block">
+                        <a href="#" class="block">
                             <img src="img/best/blouse2.jpg" alt="">
                             <div class="text">
                                 <h3>쿠션&방석-오션블루 시리즈</h3>
@@ -816,12 +857,12 @@
                                 <span>리뷰<strong>0</strong></span>
                             </div>
                         </a>
-                        <button class="like"></button>
+                        <button class="like">LIKE 0</button>
                         <button class="star"></button>
                         <button class="shop"></button>
                     </article>
                     <article>
-                        <a href="" class="block">
+                        <a href="#" class="block">
                             <img src="img/best/blouse3.jpg" alt="">
                             <div class="text">
                                 <h3>쿠션&방석-오션블루 시리즈</h3>
@@ -829,12 +870,12 @@
                                 <span>리뷰<strong>0</strong></span>
                             </div>
                         </a>
-                        <button class="like"></button>
+                        <button class="like">LIKE 0</button>
                         <button class="star"></button>
                         <button class="shop"></button>
                     </article>
                     <article>
-                        <a href="" class="block">
+                        <a href="#" class="block">
                             <img src="img/best/blouse4.jpg" alt="">
                             <div class="text">
                                 <h3>쿠션&방석-오션블루 시리즈</h3>
@@ -842,12 +883,12 @@
                                 <span>리뷰<strong>0</strong></span>
                             </div>
                         </a>
-                        <button class="like"></button>
+                        <button class="like">LIKE 0</button>
                         <button class="star"></button>
                         <button class="shop"></button>
                     </article>
                     <article>
-                        <a href="" class="block">
+                        <a href="#" class="block">
                             <img src="img/best/blouse5.jpg" alt="">
                             <div class="text">
                                 <h3>쿠션&방석-오션블루 시리즈</h3>
@@ -855,12 +896,12 @@
                                 <span>리뷰<strong>0</strong></span>
                             </div>
                         </a>
-                        <button class="like"></button>
+                        <button class="like">LIKE 0</button>
                         <button class="star"></button>
                         <button class="shop"></button>
                     </article>
                     <article>
-                        <a href="" class="block">
+                        <a href="#" class="block">
                             <img src="img/best/blouse6.jpg" alt="">
                             <div class="text">
                                 <h3>쿠션&방석-오션블루 시리즈</h3>
@@ -868,7 +909,7 @@
                                 <span>리뷰<strong>0</strong></span>
                             </div>
                         </a>
-                        <button class="like"></button>
+                        <button class="like">LIKE 0</button>
                         <button class="star"></button>
                         <button class="shop"></button>
                     </article>
@@ -876,7 +917,7 @@
                 <div class="best acc">
                     <h2 class="hide">acc</h2>
                     <article>
-                        <a href="" class="block">
+                        <a href="#" class="block">
                             <img src="img/best/acc1.jpg" alt="">
                             <div class="text">
                                 <h3>쿠션&방석-오션블루 시리즈</h3>
@@ -884,12 +925,12 @@
                                 <span>리뷰<strong>0</strong></span>
                             </div>
                         </a>
-                        <button class="like"></button>
+                        <button class="like">LIKE 0</button>
                         <button class="star"></button>
                         <button class="shop"></button>
                     </article>
                     <article>
-                        <a href="" class="block">
+                        <a href="#" class="block">
                             <img src="img/best/acc2.jpg" alt="">
                             <div class="text">
                                 <h3>쿠션&방석-오션블루 시리즈</h3>
@@ -897,12 +938,12 @@
                                 <span>리뷰<strong>0</strong></span>
                             </div>
                         </a>
-                        <button class="like"></button>
+                        <button class="like">LIKE 0</button>
                         <button class="star"></button>
                         <button class="shop"></button>
                     </article>
                     <article>
-                        <a href="" class="block">
+                        <a href="#" class="block">
                             <img src="img/best/acc3.jpg" alt="">
                             <div class="text">
                                 <h3>쿠션&방석-오션블루 시리즈</h3>
@@ -910,12 +951,12 @@
                                 <span>리뷰<strong>0</strong></span>
                             </div>
                         </a>
-                        <button class="like"></button>
+                        <button class="like">LIKE 0</button>
                         <button class="star"></button>
                         <button class="shop"></button>
                     </article>
                     <article>
-                        <a href="" class="block">
+                        <a href="#" class="block">
                             <img src="img/best/acc4.jpg" alt="">
                             <div class="text">
                                 <h3>쿠션&방석-오션블루 시리즈</h3>
@@ -923,12 +964,12 @@
                                 <span>리뷰<strong>0</strong></span>
                             </div>
                         </a>
-                        <button class="like"></button>
+                        <button class="like">LIKE 0</button>
                         <button class="star"></button>
                         <button class="shop"></button>
                     </article>
                     <article>
-                        <a href="" class="block">
+                        <a href="#" class="block">
                             <img src="img/best/acc5.jpg" alt="">
                             <div class="text">
                                 <h3>쿠션&방석-오션블루 시리즈</h3>
@@ -936,12 +977,12 @@
                                 <span>리뷰<strong>0</strong></span>
                             </div>
                         </a>
-                        <button class="like"></button>
+                        <button class="like">LIKE 0</button>
                         <button class="star"></button>
                         <button class="shop"></button>
                     </article>
                     <article>
-                        <a href="" class="block">
+                        <a href="#" class="block">
                             <img src="img/best/acc6.jpg" alt="">
                             <div class="text">
                                 <h3>쿠션&방석-오션블루 시리즈</h3>
@@ -949,7 +990,7 @@
                                 <span>리뷰<strong>0</strong></span>
                             </div>
                         </a>
-                        <button class="like"></button>
+                        <button class="like">LIKE 0</button>
                         <button class="star"></button>
                         <button class="shop"></button>
                     </article>
@@ -960,19 +1001,19 @@
         <section id="banner">
             <div class="wrap">
                 <div class="bnAni">
-                    <a href="" class="bn1 block">
+                    <a href="#" class="bn1 block">
                         <div class="bn b1">
                             <h2>포토퀸 최대 10,000원</h2>
                             <p>매주 한번씩, 포토퀸 선정! 10,000원 쿠폰 증정!</p>
                         </div>
                     </a>                       
-                    <a href="" class="bn2 block">
+                    <a href="#" class="bn2 block">
                         <div class="bn b2 hide">
                             <h2>3월 카드 무이자 할부 안내</h2>
                             <p>카드사별 다양한 무이자 할부 안내</p>
                         </div>
                     </a>
-                    <a href="" class="bn3 block">
+                    <a href="#" class="bn3 block">
                         <div class="bn b3 hide">
                             <h2>아이콘 사이즈</h2>
                             <p>가로 자유 * 세로 140px 로 제작</p>
@@ -988,7 +1029,7 @@
                 <p>품절 전에 서둘러야 하는 아이템이에요</p>
                 <ul class="list popAni">
                     <li>
-                        <a href="" class="block">
+                        <a href="#" class="block">
                             <img src="img/popular/pop1.jpg" alt="">
                             <div class="text flex">
                                 <h3>주방매트-포인트 캣&퍼피</h3>
@@ -996,10 +1037,13 @@
                                 <span><strong>44,000원</strong><i>50,000원</i></span>
                                 <span>리뷰<strong>0</strong></span>
                             </div>
+                            <button class="like">LIKE 0</button>
+                            <button class="star"></button>
+                            <button class="shop"></button>
                         </a>
                     </li>
                     <li>
-                        <a href="" class="block">
+                        <a href="#" class="block">
                             <img src="img/popular/pop2.jpg" alt="">
                             <div class="text flex">
                                 <h3>러그-블루 스팅</h3>
@@ -1007,10 +1051,13 @@
                                 <span><strong>44,000원</strong><i>140,000원</i></span>
                                 <span>리뷰<strong>0</strong></span>
                             </div>
+                            <button class="like">LIKE 0</button>
+                            <button class="star"></button>
+                            <button class="shop"></button>
                         </a>
                     </li>
                     <li>
-                        <a href="" class="block">
+                        <a href="#" class="block">
                             <img src="img/popular/pop3.jpg" alt="">
                             <div class="text flex">
                                 <h3>식탁보-베이스 스트라이프&마린느 윙클</h3>
@@ -1018,11 +1065,13 @@
                                 <span><strong>50,000원</strong><i>115,000원</i></span>
                                 <span>리뷰<strong>0</strong></span>
                             </div>
-                            
+                            <button class="like">LIKE 0</button>
+                            <button class="star"></button>
+                            <button class="shop"></button>
                         </a>
                     </li>
                     <li>
-                        <a href="" class="block">
+                        <a href="#" class="block">
                             <img src="img/popular/pop4.jpg" alt="">
                             <div class="text flex">
                                 <h3>쿠션&방석-스타앤 스티치</h3>
@@ -1030,11 +1079,13 @@
                                 <span><strong>29,000원</strong><i>50,000원</i></span>
                                 <span>리뷰<strong>0</strong></span>
                             </div>
-                            
+                            <button class="like">LIKE 0</button>
+                            <button class="star"></button>
+                            <button class="shop"></button>
                         </a>
                     </li>
                     <li>
-                        <a href="" class="block">
+                        <a href="#" class="block">
                             <img src="img/popular/pop5.jpg" alt="">
                             <div class="text flex">
                                 <h3>쉬폰커튼-그레이 솔리드</h3>
@@ -1042,11 +1093,13 @@
                                 <span><strong>44,000원</strong><i>237,500원</i></span>
                                 <span>리뷰<strong>0</strong></span>
                             </div>
-                            
+                            <button class="like">LIKE 0</button>
+                            <button class="star"></button>
+                            <button class="shop"></button>
                         </a>
                     </li>
                     <li>
-                        <a href="" class="block">
+                        <a href="#" class="block">
                             <img src="img/popular/pop6.jpg" alt="">
                             <div class="text flex">
                                 <h3>쿠션&방석-오션블루 시리즈</h3>
@@ -1054,11 +1107,13 @@
                                 <span><strong>44,000원</strong><i>324,800원</i></span>
                                 <span>리뷰<strong>0</strong></span>
                             </div>
-                            
+                            <button class="like">LIKE 0</button>
+                            <button class="star"></button>
+                            <button class="shop"></button>
                         </a>
                     </li>
                     <li>
-                        <a href="" class="block">
+                        <a href="#" class="block">
                             <img src="img/popular/pop7.jpg" alt="">
                             <div class="text flex">
                                 <h3>여름이불-슬리핑 램 시리즈</h3>
@@ -1066,11 +1121,13 @@
                                 <span><strong>32,000원</strong><i>216,000원</i></span>
                                 <span>리뷰<strong>0</strong></span>
                             </div>
-                            
+                            <button class="like">LIKE 0</button>
+                            <button class="star"></button>
+                            <button class="shop"></button>
                         </a>
                     </li>
                     <li>
-                        <a href="" class="block">
+                        <a href="#" class="block">
                             <img src="img/popular/pop8.jpg" alt="">
                             <div class="text flex">
                                 <h3>여름이불-베이스 스트라이프 그레이</h3>
@@ -1078,11 +1135,13 @@
                                 <span><strong>80,000원</strong><i>155,000원</i></span>
                                 <span>리뷰<strong>0</strong></span>
                             </div>
-                            
+                            <button class="like">LIKE 0</button>
+                            <button class="star"></button>
+                            <button class="shop"></button>
                         </a>
                     </li>
                     <li>
-                        <a href="" class="block">
+                        <a href="#" class="block">
                             <img src="img/popular/pop9.jpg" alt="">
                             <div class="text flex">
                                 <h3>다이닝-(D)프렌즈 포크 8Pset</h3>
@@ -1090,11 +1149,13 @@
                                 <span><strong>74,000원</strong><i>100,000원</i></span>
                                 <span>리뷰<strong>0</strong></span>
                             </div>
-                            
+                            <button class="like">LIKE 0</button>
+                            <button class="star"></button>
+                            <button class="shop"></button>
                         </a>
                     </li>
                     <li>
-                        <a href="" class="block">
+                        <a href="#" class="block">
                             <img src="img/popular/pop10.jpg" alt="">
                             <div class="text flex">
                                 <h3>데코소품-(h)인더스트리얼 훅걸이</h3>
@@ -1102,7 +1163,9 @@
                                 <span><strong>100,100원</strong><i>160,000원</i></span>
                                 <span>리뷰<strong>0</strong></span>
                             </div>
-                            
+                            <button class="like">LIKE 0</button>
+                            <button class="star"></button>
+                            <button class="shop"></button>
                         </a>
                     </li>
                 </ul>
@@ -1131,9 +1194,9 @@
                 </div>
                 <div class="img">
                     <ul class="imgAni">
-                        <li class="img1"><a href="" class="block"><img src="img/issue1.jpg" alt=""></a></li>
-                        <li class="img2"><a href="" class="block"><img src="img/issue2.jpg" alt=""></a></li>
-                        <li class="img3"><a href="" class="block"><img src="img/issue3.jpg" alt=""></a></li>
+                        <li class="img1"><a href="#" class="block"><img src="img/issue1.jpg" alt=""></a></li>
+                        <li class="img2"><a href="#" class="block"><img src="img/issue2.jpg" alt=""></a></li>
+                        <li class="img3"><a href="#" class="block"><img src="img/issue3.jpg" alt=""></a></li>
                     </ul>
                 </div>
             </div>
@@ -1142,21 +1205,105 @@
         <section id="sns">
             <div class="wrap">
                 <h2>Instagram</h2>
-                <a href="" class="block">@grapholic1</a>
-                <div class="snsimg">
-                    <a href="" class="block"><img src="img/sns/sns1.jpg" alt=""></a>
-                    <a href="" class="block"><img src="img/sns/sns2.jpg" alt=""></a>
-                    <a href="" class="block"><img src="img/sns/sns3.jpg" alt=""></a>
-                    <a href="" class="block"><img src="img/sns/sns4.jpg" alt=""></a>
-                    <a href="" class="block"><img src="img/sns/sns5.jpg" alt=""></a>
-                    <a href="" class="block"><img src="img/sns/sns6.jpg" alt=""></a>
-                    <a href="" class="block"><img src="img/sns/sns7.jpg" alt=""></a>
-                    <a href="" class="block"><img src="img/sns/sns8.jpg" alt=""></a>
-                    <a href="" class="block"><img src="img/sns/sns9.jpg" alt=""></a>
-                    <a href="" class="block"><img src="img/sns/sns10.jpg" alt=""></a>
-                    <a href="" class="block"><img src="img/sns/sns11.jpg" alt=""></a>
-                    <a href="" class="block"><img src="img/sns/sns12.jpg" alt=""></a>
-                </div>
+                <a href="#" class="block">@grapholic1</a>
+                <ul class="snsimg">
+                    <li>
+                        <a href="#" class="block">
+                            <img src="img/sns/sns1.jpg" alt="">
+                            <div class="snstext">
+                                <p>#sns1</p>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="block">
+                            <img src="img/sns/sns2.jpg" alt="">
+                            <div class="snstext">
+                                <p>#sns2</p>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="block">
+                            <img src="img/sns/sns3.jpg" alt="">
+                            <div class="snstext">
+                                <p>#sns3</p>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="block">
+                            <img src="img/sns/sns4.jpg" alt="">
+                            <div class="snstext">
+                                <p>#sns4</p>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="block">
+                            <img src="img/sns/sns5.jpg" alt="">
+                            <div class="snstext">
+                                <p>#sns5</p>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="block">
+                            <img src="img/sns/sns6.jpg" alt="">
+                            <div class="snstext">
+                                <p>#sns6</p>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="block">
+                            <img src="img/sns/sns7.jpg" alt="">
+                            <div class="snstext">
+                                <p>#sns7</p>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="block">
+                            <img src="img/sns/sns8.jpg" alt="">
+                            <div class="snstext">
+                                <p>#sns8</p>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="block">
+                            <img src="img/sns/sns9.jpg" alt="">
+                            <div class="snstext">
+                                <p>#sns9</p>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="block">
+                            <img src="img/sns/sns10.jpg" alt="">
+                            <div class="snstext">
+                                <p>#sns10</p>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="block">
+                            <img src="img/sns/sns11.jpg" alt="">
+                            <div class="snstext">
+                                <p>#sns11</p>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="block">
+                            <img src="img/sns/sns12.jpg" alt="">
+                            <div class="snstext">
+                                <p>#sns12</p>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
             </div>
         </section>
         <!-- 정보 -->
@@ -1173,7 +1320,7 @@
                         <span class="block"></span>
                         몰 오픈을 축하합니다.
                     </p>
-                    <a href="" class="block"></a>
+                    <a href="#" class="block"></a>
                 </div>
                 <div class="customer">
                     <h2>고객센터</h2>
@@ -1183,7 +1330,7 @@
                         <span class="block"></span>
                         토, 일, 공휴일 휴무
                     </p>
-                    <a href="" class="block"></a>
+                    <a href="#" class="block"></a>
                 </div>
                 <div class="account">
                     <h2>입금계좌 안내</h2>
@@ -1196,8 +1343,8 @@
                 </div>
                 <div class="benefits">
                     <h2>회원혜택 안내</h2>
-                    <a href="">1:1문의</a>
-                    <a href="">혜택안내</a>
+                    <a href="#">1:1문의</a>
+                    <a href="#">혜택안내</a>
                 </div>
             </div>
         </section>
@@ -1205,17 +1352,17 @@
     <!-- 하단 -->
     <footer>
         <div class="wrap">
-            <h1><a href="" class="block">GRAPHOLIC SKIN</a></h1>
+            <h1><a href="#" class="block">GRAPHOLIC SKIN</a></h1>
             <ul class="fnb">
-                <li><a href="" class="block">회사소개</a></li>
-                <li><a href="" class="block">이용약관</a></li>
-                <li><a href="" class="block">개인정보취급방침</a></li>
-                <li><a href="" class="block">이용안내</a></li>
+                <li><a href="#" class="block">회사소개</a></li>
+                <li><a href="#" class="block">이용약관</a></li>
+                <li><a href="#" class="block">개인정보취급방침</a></li>
+                <li><a href="#" class="block">이용안내</a></li>
             </ul>
             <ul class="sns">
-                <li><a href="" class="block">페이스북</a></li>
-                <li><a href="" class="block">인스타그램</a></li>
-                <li><a href="" class="block">네이버</a></li>
+                <li><a href="#" class="block">페이스북</a></li>
+                <li><a href="#" class="block">인스타그램</a></li>
+                <li><a href="#" class="block">네이버</a></li>
             </ul>
             <ul class="address">
                 <li>04706 서울 성동구 무학로14길 18 한신그린빌 가동 502호</li>
@@ -1229,16 +1376,16 @@
             </ul>
             <p><strong>반품주소지</strong> : 디자인편집창 > 전체화면보기 텝 > _gh > js > setting.js </p>
             <p>
-                KCP 구매안전서비스 <a href="">서비스 가입사실 확인</a>
+                KCP 구매안전서비스 <a href="#">서비스 가입사실 확인</a>
                 <span class="block"></span>
                 현금 등으로 결제시 저희 쇼핑몰이 가입한 PG에스크로 구매안전 서비스를 이용하실 수 있습니다.
             </p>
             <p>Copyright © dalmuri . All rights reserved.</p>
             <ul class="fnb2">
-                <li><a href="" class="block">공지사항</a></li>
-                <li><a href="" class="block">Q&A</a></li>
-                <li><a href="" class="block">고객센터</a></li>
-                <li><a href="" class="block">멤버쉽안내</a></li>
+                <li><a href="#" class="block">공지사항</a></li>
+                <li><a href="#" class="block">Q&A</a></li>
+                <li><a href="#" class="block">고객센터</a></li>
+                <li><a href="#" class="block">멤버쉽안내</a></li>
             </ul>
         </div>
     </footer>
