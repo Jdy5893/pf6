@@ -39,15 +39,15 @@
                 return false;
             });
             //메뉴 서브
-            $("header div .gnb li .sub").hide();
+            $("header div .gnb > li .sub").hide();
             let h;
-            $("header div .gnb li").hover(
+            $("header div .gnb > li").hover(
                 function(){
                     h=$(this).index()+1;
-                    $("header div .gnb li:nth-child("+h+") .sub").stop().show();
+                    $("header div .gnb > li:nth-child("+h+") .sub").stop().show();
                 },
                 function(){
-                    $("header div .gnb li:nth-child("+h+") .sub").hide();
+                    $("header div .gnb > li:nth-child("+h+") .sub").hide();
                 }
             );
             //ham버튼 클릭 시 창
@@ -283,7 +283,17 @@
                 <li><a href="#" class="block">바캉스🌙</a></li>
                 <li><a href="#" class="block">세일🩵</a></li>
                 <li><a href="#" class="block">이벤트</a></li>
-                <li><a href="#" class="block">커뮤니티</a></li>
+                <li>
+                    <a href="#" class="block">커뮤니티</a>
+                    <ul class="sub">
+                        <li><a href="#" class="block">자주묻는질문</a></li>
+                        <li><a href="#" class="block">공지사항</a></li>
+                        <li><a href="#" class="block">상품 리뷰</a></li>
+                        <li><a href="#" class="block">상품 Q&A</a></li>
+                        <li><a href="#" class="block">자유게시판</a></li>
+                        <li><a href="#" class="block">갤러리</a></li>
+                    </ul>
+                </li>
             </ul>
             <ul class="enb">
                 <li><a href="#" class="block">로그인</a></li>
