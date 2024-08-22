@@ -54,7 +54,7 @@
   width: 100%;
   height: 100%;
   background-size: cover;
-  background-position: -6% 50%;
+  background-position: center;
   background-repeat: no-repeat;
   position: relative;
   border-radius: 30px;
@@ -374,11 +374,7 @@ main{
   
 }
 #best .wrap .best article a .text span:nth-of-type(3){
-  width: fit-content;
-  padding: 2px 5px ;
-  background-color: #f06060;
-  color: #fff;
-  font-size: 12px;
+
 }
 #best .wrap .best article .like{
   transition: 0.5s;
@@ -627,7 +623,7 @@ main{
   background-color: #fff;
   border-radius: 50%;
   box-shadow: 0px 0px 10px #ccc;
-  top: 37%;
+  top: 40%;
 }
 #popular .wrap .popAni .slick-prev{
   left: -30px;
@@ -715,23 +711,83 @@ main{
 }
 #popular .wrap .popAni li a .text{
   flex-direction: column;
-  margin-top: 10px;
   line-height: 1.6;
+  height: 140px;
+  padding: 10px 0;
 }
 #popular .wrap .popAni li a .text h3{
   font-weight: 600;
 }
 #popular .wrap .popAni li a .text p{
   font-size: 12px;
+  color: #222;
 }
-#popular .wrap .popAni li a .text span{
+#popular .wrap .popAni li a .text > span{
+  display: block;
+}
+#popular .wrap .popAni li a .text > span:nth-of-type(2){
+  font-size: 12px;
+}
+#popular .wrap .popAni li a .text > span strong{
   
+}
+#popular .wrap .popAni li a .text > span i{
+  font-size: 12px;
+  color: #545454;
+  text-decoration: line-through;
+}
+#popular .wrap .popAni li a .text .color{
+  display: flex;
+  gap: 5px;
+  padding: 5px 0;
+}
+#popular .wrap .popAni li a .text .color span{
+  font-size: 0;
+  width: 12px;
+  height: 12px;
+  display: inline-block;
+  border-radius: 50%;
+  border: 1px solid #cccccc8a;
+}
+#popular .wrap .popAni li:nth-child(3) a .text .color span:nth-of-type(1){
+  background-color: #000;
+}
+#popular .wrap .popAni li:nth-child(3) a .text .color span:nth-of-type(2){
+  background-color: gray;
+}
+#popular .wrap .popAni li:nth-child(3) a .text .color span:nth-of-type(3){
+  background-color: #fff;
+}
+#popular .wrap .popAni li:nth-child(3) a .text .color span:nth-of-type(4){
+  background-color: red;
+}
+
+#popular .wrap .popAni li:nth-child(9) a .text .color span:nth-of-type(1){
+  background-color: #000;
+}
+#popular .wrap .popAni li:nth-child(9) a .text .color span:nth-of-type(2){
+  background-color: #fff;
+}
+#popular .wrap .popAni li:nth-child(9) a .text .color span:nth-of-type(3){
+  background-color: blue;
+}
+#popular .wrap .popAni li:nth-child(9) a .text .color span:nth-of-type(4){
+  background-color: red;
+}
+#popular .wrap .popAni li:nth-child(9) a .text .color span:nth-of-type(5){
+  background-color: yellow;
+}
+#popular .wrap .popAni li:nth-child(9) a .text .color span:nth-of-type(6){
+  background-color: green;
 }
 #popular .wrap .popAni li a:hover .like{
   opacity: 1;
 }
 #popular .wrap .popAni li a:hover .star{
   opacity: 1;
+}
+#popular .wrap .popAni li a .shop{
+  bottom: 40%;
 }
 /* 이슈 */
 #issue{
@@ -746,12 +802,12 @@ main{
   background-color: #f7f7f7;
   position: absolute;
   left: 0;
-  top: 100px;
+  top: 0;
   z-index: -1;
 }
 #issue .wrap{
   max-width: initial;
-  padding: 200px 0;
+  padding: 100px 0;
   padding-left: calc((100% - 1240px) / 2);
   display: grid;
   grid-template-columns: 1fr 1fr;

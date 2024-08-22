@@ -90,3 +90,37 @@ body{
 .current{
   
 }
+.price{
+  width: fit-content;
+  background-color: #f06060;
+  color: #fff;
+  font-size: 12px;
+  line-height: 1;
+  padding: 6px;
+  display: inline-block;
+}
+.add{
+  font-size: 12px;
+  width: fit-content;
+  border: 1px solid #3333332e;
+  line-height: 1;
+  padding: 5px;
+  background-color: #473833;
+  color: #fff;
+}
+.limited{
+  font-size: 12px;
+  width: fit-content;
+  border: 1px solid #3333332e;
+  line-height: 1;
+  padding: 5px;
+  display: inline-block;
+}
+.free{
+  font-size: 12px;
+  width: fit-content;
+  border: 1px solid #3333332e;
+  line-height: 1;
+  padding: 5px;
+  display: inline-block;
+}

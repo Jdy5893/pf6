@@ -28,6 +28,16 @@
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
     <script>
         $(document).ready(function(){
+            //up버튼
+            $(".up").click(function(){
+                $("html,body").animate({scrollTop:0},1000);
+            });
+            //down버튼
+            var c = $("#info").offset().top;
+            $(".down").click(function(){
+                $("html,body").animate({scrollTop:c},1000);
+                return false;
+            });
             //메뉴 서브
             $("header div .gnb li .sub").hide();
             let h;
@@ -166,7 +176,10 @@
                 arrows: true,
                 fade: false
                 
-                
+            });
+            $("#popular .wrap .popAni .slick-prev").hide();
+            $("#popular .wrap .popAni .slick-next").click(function(){
+                $("#popular .wrap .popAni .slick-prev").show();
             });
 
             //메인 이슈 슬릭
@@ -197,8 +210,6 @@
                 asNavFor: ".imgAni"
             });
 
-
-            //인스타그램 
         });
     </script>
 </head>
@@ -529,7 +540,7 @@
                                 <h3>러그-블루 스팅</h3>
                                 <span><strong>34,000원</strong><i>52,000원</i></span>
                                 <span>리뷰<strong>0</strong></span>
-                                <span>특가</span>
+                                <span class="price">특가</span>
                             </div>
                         </a>
                         <button class="like">LIKE 0</button>
@@ -773,7 +784,7 @@
                                 <h3>쿠션&방석-오션블루 시리즈</h3>
                                 <span><strong>44,000원</strong><i>124,800원</i></span>
                                 <span>리뷰<strong>0</strong></span>
-                                <span>특가</span>
+                                <span class="price">특가</span>
                             </div>
                         </a>
                         <button class="like">LIKE 0</button>
@@ -1064,6 +1075,12 @@
                                 <p>화장대와 옷장으로 멀티공간 연출~</p>
                                 <span><strong>50,000원</strong><i>115,000원</i></span>
                                 <span>리뷰<strong>0</strong></span>
+                                <div class="color">
+                                    <span>black</span>
+                                    <span>gray</span>
+                                    <span>white</span>
+                                    <span>red</span>
+                                </div>
                             </div>
                             <button class="like">LIKE 0</button>
                             <button class="star"></button>
@@ -1078,6 +1095,7 @@
                                 <p>원컬러로 깔끔하게! 투톤컬러로 개성있게!</p>
                                 <span><strong>29,000원</strong><i>50,000원</i></span>
                                 <span>리뷰<strong>0</strong></span>
+                                <span class="price">특가</span>
                             </div>
                             <button class="like">LIKE 0</button>
                             <button class="star"></button>
@@ -1134,6 +1152,7 @@
                                 <p>원컬러로 깔끔하게! 투톤컬러로 개성있게!</p>
                                 <span><strong>80,000원</strong><i>155,000원</i></span>
                                 <span>리뷰<strong>0</strong></span>
+                                <span class="add">추가항목</span>
                             </div>
                             <button class="like">LIKE 0</button>
                             <button class="star"></button>
@@ -1148,6 +1167,19 @@
                                 <p>세련된 컬러와 모던심플한 디자인~</p>
                                 <span><strong>74,000원</strong><i>100,000원</i></span>
                                 <span>리뷰<strong>0</strong></span>
+                                <div class="color">
+                                    <span>black</span>
+                                    <span>white</span>
+                                    <span>blue</span>
+                                    <span>red</span>
+                                    <span>yellow</span>
+                                    <span>green</span>
+                                </div>
+                                <div class="productifo">
+                                    <span class="free">무료배송</span>
+                                    <span class="limited">한정상품</span>
+                                    <span class="price">특가</span>
+                                </div>
                             </div>
                             <button class="like">LIKE 0</button>
                             <button class="star"></button>
